@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'GalleryController@index')->name('gallery.index');
+Route::get('/search', 'GalleryController@search')->name('search');
