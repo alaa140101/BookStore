@@ -25,4 +25,4 @@ Route::get('/', 'GalleryController@index')->name('gallery.index');
 
 Route::get('/search', 'GalleryController@search')->name('search');
 
-Route::get('/book/{id}', 'BooksController@details')->name('book.details');
+Route::get('/book/{book}', 'BooksController@details')->name('book.details');

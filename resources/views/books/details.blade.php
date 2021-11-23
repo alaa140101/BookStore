@@ -31,8 +31,46 @@
                      </tr>
                      @endif
                      @if ($book->authors()->count() > 0)
-                         
+                     <tr>
+                       <th>المؤلفون</th>
+                       <td>
+                         @foreach ($book->authors as $author)
+                          {{ $loop->first ? '': 'و'}}
+                          {{$author->name}}                             
+                         @endforeach
+                       </td>
+                      </tr>
                      @endif
+                     @if ($book->publisher)
+                      <tr>
+                        <th>الناشر</th> 
+                        <td>{{ $book->publisher->name }}</td>
+                      </tr>                         
+                     @endif
+                     @if ($book->description)
+                      <tr>
+                        <th>الوصف</th>
+                        <td>{{ $book->description }}</td>
+                      </tr>                         
+                     @endif
+                     @if ($book->publish_year)
+                         <tr>
+                           <th>سنة النشر</th>
+                           <td>{{ $book->publish_year }}</td>
+                         </tr>
+                     @endif
+                     <tr>
+                       <th>عدد الصفحات</th>
+                       <td>{{ $book->number_of_pages }}</td>
+                     </tr>
+                     <tr>
+                       <th>عدد النسخ</th>
+                       <td>{{ $book->number_of_copies }}</td>
+                     </tr>
+                     <tr>
+                       <th>السعر</th>
+                       <td>{{ $book->price }} $</td>
+                     </tr>
                    </table>
                 </div>
             </div>
