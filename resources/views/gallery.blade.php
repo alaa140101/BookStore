@@ -23,9 +23,10 @@
                             @if ($book->number_of_copies > 0)
                                 <div class="col-lg-3 col-md-6 col-6 mb-3">
                                     <div class="d-block mb-2 h-100 border rounded p-3">
-                                        <img src="{{ asset('storage/' .$book->cover_image) }}" alt="" class="img-fluid img-thumbnail">
-                                        <b><p style="height: 25px">{{ $book->title}}</p></b>
-
+                                        <a href="{{route('book.details', $book->id)}}" style="color:#525252;">                                        
+                                            <img src="{{ asset('storage/' .$book->cover_image) }}" alt="" class="img-fluid img-thumbnail">
+                                            <b><p style="height: 25px">{{ $book->title}}</p></b>
+                                        </a>
                                         @if ($book->category != NULL)
                                         <br><a href="#" style="color:#525252">{{ $book->category->name }}</a>                              
                                         @endif
