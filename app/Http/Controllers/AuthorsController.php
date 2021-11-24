@@ -82,4 +82,11 @@ class AuthorsController extends Controller
     {
         //
     }
+
+    public function result(Author $author)
+    {
+        $books = $author->books()->paginate(12);
+        $title = 'الكتب التابعة للمؤلف: ' . $author->name;
+        return view('gallery', compact('books', 'title'));
+    }
 }

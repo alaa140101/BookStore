@@ -26,3 +26,7 @@ Route::get('/', 'GalleryController@index')->name('gallery.index');
 Route::get('/search', 'GalleryController@search')->name('search');
 
 Route::get('/book/{book}', 'BooksController@details')->name('book.details');
+
+Route::get('/categories/{category}', 'CategoriesController@result')->name('gallery.categories.show');
+
+Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');

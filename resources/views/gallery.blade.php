@@ -28,13 +28,13 @@
                                             <b><p style="height: 25px">{{ $book->title}}</p></b>
                                         </a>
                                         @if ($book->category != NULL)
-                                        <br><a href="#" style="color:#525252">{{ $book->category->name }}</a>                              
+                                        <br><a href="{{route('gallery.categories.show', $book->category)}}" style="color:#525252">{{ $book->category->name }}</a>                              
                                         @endif
                                         @if ($book->authors->isNotEmpty())
                                             <br><b> تأليف</b>
                                             @foreach ($book->authors as $author)
                                                 {{ $loop->first ? '' : 'و'}}
-                                                <a href="#" style="color:#525252">{{$author->name}}</a>
+                                                <a href="{{route('gallery.authors.show', $author)}}" style="color:#525252">{{$author->name}}</a>
 
                                             @endforeach
                                         @endif
