@@ -111,8 +111,7 @@
                             </li>
                         @endauth
                         <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('gallery.categories.index') }}">                                 --}}
-                            <a class="nav-link" href="">                                
+                            <a class="nav-link" href="{{ route('gallery.categories.index') }}">                                
                                     التصنيفات 
                                 <i class="fas fa-list"></i> 
                             </a>
