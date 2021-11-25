@@ -94,7 +94,7 @@ class AuthorsController extends Controller
     public function list()
     {
         $authors = Author::all()->sortBy('name');
-        $title = 'التصنيفات';
+        $title = 'المؤلفون';
         return view('authors.index', compact('authors', 'title'));
     }
 

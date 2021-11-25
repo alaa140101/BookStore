@@ -40,3 +40,7 @@ Route::get('/authors/search', 'AuthorsController@search')->name('gallery.authors
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
 
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
+
+Route::get('/admin', function() {
+    return view('theme.default');
+});

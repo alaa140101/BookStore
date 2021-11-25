@@ -93,7 +93,7 @@ class PublishersController extends Controller
     public function list()
     {
         $publishers = Publisher::all()->sortBy('name');
-        $title = 'التصنيفات';
+        $title = 'الناشرين';
         return view('publishers.index', compact('publishers', 'title'));
     }
 
