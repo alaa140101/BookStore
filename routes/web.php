@@ -35,4 +35,8 @@ Route::get('/publishers', 'PublishersController@list')->name('gallery.publishers
 Route::get('/publishers/search', 'PublishersController@search')->name('gallery.publishers.search');
 Route::get('/publishers/{publisher}', 'PublishersController@result')->name('gallery.publishers.show');
 
+Route::get('/authors', 'AuthorsController@list')->name('gallery.authors.index');
+Route::get('/authors/search', 'AuthorsController@search')->name('gallery.authors.search');
+Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
+
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');

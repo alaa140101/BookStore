@@ -125,8 +125,7 @@
                         </li>
 
                         <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('gallery.authors.index') }}">                                 --}}
-                            <a class="nav-link" href="">                                
+                            <a class="nav-link" href="{{ route('gallery.authors.index') }}">                                
                                     المؤلفون 
                                 <i class="fas fa-pen"></i> 
                             </a>
