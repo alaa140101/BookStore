@@ -118,8 +118,7 @@
                         </li>
 
                         <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('gallery.publishers.index') }}">                                 --}}
-                            <a class="nav-link" href="">                                
+                            <a class="nav-link" href="{{ route('gallery.publishers.index') }}">                                
                                     الناشرون 
                                 <i class="fas fa-table"></i> 
                             </a>
