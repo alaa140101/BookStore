@@ -41,6 +41,5 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
 
-Route::get('/admin', function() {
-    return view('theme.default');
-});
+
+Route::get('/admin', 'AdminsController@index')->name('admin.index');
