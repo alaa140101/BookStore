@@ -43,3 +43,5 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 
 
 Route::get('/admin', 'AdminsController@index')->name('admin.index');
+
+Route::get('/admin/books', 'BooksController@index')->name('books.index');

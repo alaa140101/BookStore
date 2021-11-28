@@ -1,6 +1,6 @@
 @extends('theme.default')
 
-@section('head')
+@section('heading')
     لوحة التحكم
 @endsection
 
