@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
+use App\{
+    Book,
+    Author,
+    Category,
+    Publisher,
+};
+use App\Traits\ImageUploadTrait;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
+    use ImageUploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +33,10 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::all();
+        $categories = Category::all();
+        $publishers = Publisher::all();
+        return view('admin.books.create', compact('categories', 'authors','publishers'));
     }
 
     /**
@@ -36,7 +47,40 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'isbn' => ['required', 'alpha_num', Rule::unique('books', 'isbn')],
+            'cover_image' => 'image|required',
+            'category' => 'nullable',
+            'authors' => 'nullable',
+            'publisher' => 'nullable',
+            'description' => 'nullable',
+            'publish_year' => 'numeric|nullable',
+            'number_of_pages' => 'numeric|required',
+            'number_of_copies' => 'numeric|required',
+            'price' => 'numeric|required',
+        ]);
+
+        $book = new Book;
+
+        $book->title = $request->title;
+        $book->cover_image = $this->uploadImage($request->cover_image);
+        $book->isbn = $request->isbn;
+        $book->category_id = $request->category;
+        $book->publisher_id = $request->publisher;
+        $book->description = $request->description;
+        $book->publisher_year = $request->publisher_year;
+        $book->number_of_pages = $request->number_of_pages;
+        $book->number_of_copies = $request->number_of_copies;
+        $book->price = $request->price;
+
+        $book->save();
+
+        $book->authors()->attach($request->authors);
+
+        session()->flash('flash_message', 'تمت إضافة الكتاب بنجاح');
+
+        return redirect(route('books.show', $book));
     }
 
     /**

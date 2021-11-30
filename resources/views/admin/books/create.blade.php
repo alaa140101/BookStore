@@ -85,39 +85,54 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="title" class="col-md-4 col-form-label text-md-right">عنوان الكتاب</label>
+          <label for="description" class="col-md-4 col-form-label text-md-right">الوصف</label>
           <div class="col-md-6">
-            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title">
-            @error('title')
+            <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description">{{ old('description') }}</textarea>
+            @error('description')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
           </div>
         </div>
         <div class="form-group row">
-          <label for="title" class="col-md-4 col-form-label text-md-right">عنوان الكتاب</label>
+          <label for="publish_year" class="col-md-4 col-form-label text-md-right">سنة النشر</label>
           <div class="col-md-6">
-            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title">
-            @error('title')
+            <input id="publish_year" type="text" class="form-control @error('publish_year') is-invalid @enderror" name="publish_year" value="{{ old('publish_year') }}" autocomplete="publish_year">
+            @error('publish_year')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
           </div>
         </div>
         <div class="form-group row">
-          <label for="title" class="col-md-4 col-form-label text-md-right">عنوان الكتاب</label>
+          <label for="number_of_pages" class="col-md-4 col-form-label text-md-right">عدد الصفحات</label>
           <div class="col-md-6">
-            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title">
-            @error('title')
+            <input id="number_of_pages" type="text" class="form-control @error('number_of_pages') is-invalid @enderror" name="number_of_pages" value="{{ old('number_of_pages') }}" autocomplete="number_of_pages">
+            @error('number_of_pages')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
           </div>
         </div>
         <div class="form-group row">
-          <label for="title" class="col-md-4 col-form-label text-md-right">عنوان الكتاب</label>
+          <label for="number_of_copies" class="col-md-4 col-form-label text-md-right">عدد النسخ</label>
           <div class="col-md-6">
-            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title">
-            @error('title')
+            <input id="number_of_copies" type="text" class="form-control @error('number_of_copies') is-invalid @enderror" name="number_of_copies" value="{{ old('number_of_copies') }}" autocomplete="number_of_copies">
+            @error('number_of_copies')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="price" class="col-md-4 col-form-label text-md-right">السعر</label>
+          <div class="col-md-6">
+            <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="price">
+            @error('price')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <div class="col-md-1">
+            <button type="submit" class="btn btn-primary">اضف</button>
           </div>
         </div>
 

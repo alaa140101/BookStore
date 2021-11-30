@@ -46,3 +46,4 @@ Route::get('/admin', 'AdminsController@index')->name('admin.index');
 
 Route::get('/admin/books', 'BooksController@index')->name('books.index');
 Route::get('/admin/books/create', 'BooksController@create')->name('books.create');
+Route::post('/admin/books', 'BooksController@store');
