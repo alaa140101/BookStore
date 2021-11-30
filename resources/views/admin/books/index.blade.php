@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-  <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i>اضف كتابا جديد</a>    
+  <a href="{{ route('books.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>اضف كتابا جديد</a>    
   <hr>
   <div class="row">
     <div class="col-md-12">
