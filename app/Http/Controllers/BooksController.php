@@ -91,7 +91,7 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('admin.books.show', compact('book'));
     }
 
     /**
