@@ -4,6 +4,17 @@
 عرض تفاصيل الكتاب
 @endsection
 
+@section('head')
+  <style>
+    table {
+      table-layout: fixed;
+    }
+    table tr th {
+      width: 30%;
+    }
+  </style>    
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

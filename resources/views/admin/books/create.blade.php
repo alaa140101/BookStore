@@ -35,10 +35,11 @@
         <div class="form-group row">
           <label for="cover_image" class="col-md-4 col-form-label text-md-right">صورة الغلاف</label>
           <div class="col-md-6">
-            <input id="cover_image" accept="image/*" type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image" value="{{ old('cover_image') }}" autocomplete="cover_image">
+            <input id="cover_image" accept="image/*" onchange="readCoverImage(this);" type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image" value="{{ old('cover_image') }}" autocomplete="cover_image">
             @error('cover_image')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            <img id="cover-image-thumb" class="img-fluid img-thumbnail">
           </div>
         </div>
         <div class="form-group row">
@@ -141,4 +142,19 @@
   </div>
 </div>
     
+@endsection
+
+@section('script')
+  <script>
+    function readCoverImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#cover-image-thumb')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
 @endsection
