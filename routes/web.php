@@ -49,3 +49,5 @@ Route::get('/admin/books/create', 'BooksController@create')->name('books.create'
 Route::post('/admin/books', 'BooksController@store');
 
 Route::get('/admin/books/{book}', 'BooksController@show')->name('books.show');
+Route::patch('/admin/books/{book}', 'BooksController@update');
+Route::get('/admin/books/{book}/edit', 'BooksController@edit')->name('books.edit');

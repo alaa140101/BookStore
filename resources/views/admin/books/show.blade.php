@@ -87,6 +87,7 @@
                        <td>{{ $book->price }} $</td>
                      </tr>
                    </table>
+                   <a href="{{ route('books.edit', $book) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i>تعديل</a>
                 </div>
             </div>
         </div>
