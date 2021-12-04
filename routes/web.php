@@ -44,10 +44,4 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 
 Route::get('/admin', 'AdminsController@index')->name('admin.index');
 
-Route::get('/admin/books', 'BooksController@index')->name('books.index');
-Route::get('/admin/books/create', 'BooksController@create')->name('books.create');
-Route::post('/admin/books', 'BooksController@store');
-
-Route::get('/admin/books/{book}', 'BooksController@show')->name('books.show');
-Route::patch('/admin/books/{book}', 'BooksController@update');
-Route::get('/admin/books/{book}/edit', 'BooksController@edit')->name('books.edit');
+Route::resource('/admin/books', 'BooksController');

@@ -43,6 +43,11 @@
               <td>{{ $book->price }}</td>
               <td>
                 <a href="{{ route('books.edit', $book) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i>تعديل</a>
+                <form class="d-inline-block" action="{{ route('books.destroy', $book) }}" method="post">
+                  @method('DELETE')
+                  @csrf
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('هل انت متأكد؟')"><i class="fa fa-trash"></i> حذف</button>
+                </form>
               </td>
             </tr>
           @endforeach

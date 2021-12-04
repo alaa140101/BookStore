@@ -164,7 +164,13 @@ class BooksController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        Storage::disk('public')->delete($book->cover_image);
+
+        $book->delete();
+
+        session()->flash('flash_message', 'تم حذف الكتاب بنجاح');
+
+        return redirect(route('books.index'));
     }
 
     public function details(Book $book)

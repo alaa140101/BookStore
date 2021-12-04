@@ -13,7 +13,7 @@
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
+  <li class="nav-item {{ request()->is('admin') ? 'active' : '' }}">
       <a class="nav-link text-right" href="{{route('admin.index')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>لوحة التحكم</span></a>
@@ -23,7 +23,7 @@
   <hr class="sidebar-divider">
  
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item {{ request()->is('admin/books*') ? 'active' : '' }}">
       <a class="nav-link text-right" href="{{route('books.index')}}">
           <i class="fas fa-book-open"></i>
           <span>الكتب</span>
