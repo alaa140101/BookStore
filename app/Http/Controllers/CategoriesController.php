@@ -14,7 +14,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'nullable',
+        ]);
+
+        $category = new Category;
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+
+        $category->save();
+
+        session()->flash('flash_message', 'تمت إضافة التصنيف بنجاح');
+
+        return redirect(route('categories.index', $category));
     }
 
     /**
@@ -46,7 +61,7 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -57,7 +72,7 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -69,7 +84,19 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'nullable',
+        ]);
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+
+        $category->save();
+
+        session()->flash('flash_message', 'تم تعديل التصنيف بنجاح');
+
+        return redirect(route('categories.index', $category));
     }
 
     /**
@@ -80,7 +107,11 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        session()->flash('flash_message', 'تم حذف التصنيف بنجاح');
+
+        return redirect(route('categories.index'));
     }
 
     public function result(Category $category)

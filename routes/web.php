@@ -45,3 +45,4 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 Route::get('/admin', 'AdminsController@index')->name('admin.index');
 
 Route::resource('/admin/books', 'BooksController');
+Route::resource('/admin/categories', 'CategoriesController');
