@@ -14,7 +14,8 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::all();
+        return view('admin.authors.index', compact('authors'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.authors.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'nullable',
+        ]);
+
+        $author = new Author;
+
+        $author->name = $request->name;
+        $author->description = $request->description;
+
+        $author->save();
+
+        session()->flash('flash_message', 'تمت إضافة المؤلف بنجاح');
+
+        return redirect(route('authors.index', $author));
     }
 
     /**
@@ -57,7 +72,7 @@ class AuthorsController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('admin.authors.edit', compact('author'));
     }
 
     /**
@@ -69,7 +84,19 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'nullable',
+        ]);
+
+        $author->name = $request->name;
+        $author->description = $request->description;
+
+        $author->save();
+
+        session()->flash('flash_message', 'تمت تعديل المؤلف بنجاح');
+
+        return redirect(route('authors.index', $author));
     }
 
     /**
@@ -80,7 +107,11 @@ class AuthorsController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+
+        session()->flash('flash_message', 'تم حذف المؤلف بنجاح');
+
+        return redirect(route('authors.index'));
     }
 
     public function result(Author $author)

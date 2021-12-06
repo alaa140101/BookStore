@@ -37,15 +37,15 @@
       </a>
   </li>
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item {{ request()->is('admin/publishers*') ? 'active' : '' }}">
-      <a class="nav-link text-right" href="{{route('publishers.index')}}">
+  <li class="nav-item {{ request()->is('admin/authors*') ? 'active' : '' }}">
+      <a class="nav-link text-right" href="{{route('authors.index')}}">
           <i class="fas fa-pen-fancy"></i>
           <span>المؤلفون</span>
       </a>
   </li>
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
-      <a class="nav-link text-right" href="#">
+  <li class="nav-item {{ request()->is('admin/publishers*') ? 'active' : '' }}">
+      <a class="nav-link text-right" href="{{route('publishers.index')}}">
           <i class="fas fa-table"></i>
           <span>الناشرون</span>
       </a>
