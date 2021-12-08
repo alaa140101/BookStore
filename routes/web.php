@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
+Route::prefix('/admin')->middleware('can:update-books')->group(function() {
+    Route::get('/', 'AdminsController@index')->name('admin.index');
+    Route::resource('/books', 'BooksController');
+    Route::resource('/categories', 'CategoriesController');
+    Route::resource('/publishers', 'PublishersController');
+    Route::resource('/authors', 'AuthorsController');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -42,9 +46,3 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
 
 
-Route::get('/admin', 'AdminsController@index')->name('admin.index');
-
-Route::resource('/admin/books', 'BooksController');
-Route::resource('/admin/categories', 'CategoriesController');
-Route::resource('/admin/publishers', 'PublishersController');
-Route::resource('/admin/authors', 'AuthorsController');
