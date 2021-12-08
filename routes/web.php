@@ -21,6 +21,7 @@ Route::prefix('/admin')->middleware('can:update-books')->group(function() {
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/publishers', 'PublishersController');
     Route::resource('/authors', 'AuthorsController');
+    Route::resource('/users', 'UsersController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
