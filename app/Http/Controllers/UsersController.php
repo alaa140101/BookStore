@@ -70,7 +70,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->administration_level = $request->adminstration_level;
+        $user->adminstration_level = $request->adminstration_level;
         $user->save();
 
         session()->flash('flash_message', 'تم تعديل صلاحيات المستخدم بنجاح');
