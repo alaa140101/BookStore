@@ -70,7 +70,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->administration_level = $request->adminstration_level;
+        $user->save();
+
+        session()->flash('flash_message', 'تم تعديل صلاحيات المستخدم بنجاح');
+
+        return redirect(route('users.index'));
     }
 
     /**
@@ -81,6 +86,10 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        session()->flash('flash_message', 'تم حذف المستخدم بنجاح');
+
+        return redirect(route('users.index'));
     }
 }
