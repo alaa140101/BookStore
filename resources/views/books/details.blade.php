@@ -14,6 +14,31 @@
                        <td class="lead"><b>{{ $book->title}}</b></td>
                      </tr>
 
+                     <tr>
+                       <th>تقييم المستخدمين</th>
+                       <td>
+                        <span class="score">
+                          <div class="score-wrap">
+                              <span class="stars-active" style="width: {{ $book->rate()*20 }}%">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                              </span>
+                              <span class="stars-inactive">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                              </span>
+                          </div>
+                      </span>
+                      <span>عدد المقيمين {{ $book->ratings()->count() }}  مستخدم</span>
+                       </td>
+                     </tr>
+
                      @if ($book->isbn)
                       <tr>
                         <th>الرقم التسلسلي</th>

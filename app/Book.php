@@ -23,5 +23,13 @@ class Book extends Model
         return $this->belongsToMany('App\Author', 'book_author');
     }
 
+    public function ratings()
+    {
+        return $this->hasMany('App\Rating');
+    }
 
+    public function rate()
+    {
+        return $this->ratings->isNotEmpty() ? $this->ratings()->sum('value') / $this->ratings()->count() : 0;
+    }
 }

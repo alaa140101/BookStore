@@ -27,6 +27,25 @@
                                             <img src="{{ asset('storage/' .$book->cover_image) }}" alt="" class="img-fluid img-thumbnail">
                                             <b><p style="height: 25px">{{ $book->title}}</p></b>
                                         </a>
+
+                                        <span class="score">
+                                            <div class="score-wrap">
+                                                <span class="stars-active" style="width: {{ $book->rate()*20 }}%">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </span>
+                                                <span class="stars-inactive">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </span>
+                                            </div>
+                                        </span>
                                         @if ($book->category != NULL)
                                         <br><a href="{{route('gallery.categories.show', $book->category)}}" style="color:#525252">{{ $book->category->name }}</a>                              
                                         @endif
