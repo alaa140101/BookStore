@@ -31,6 +31,7 @@ Route::get('/', 'GalleryController@index')->name('gallery.index');
 Route::get('/search', 'GalleryController@search')->name('search');
 
 Route::get('/book/{book}', 'BooksController@details')->name('book.details');
+Route::post('/book/{book}/rate', 'BooksController@rate')->name('book.rate');
 
 Route::get('/categories', 'CategoriesController@list')->name('gallery.categories.index');
 Route::get('/categories/search', 'CategoriesController@search')->name('gallery.categories.search');
