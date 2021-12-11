@@ -189,6 +189,7 @@ class BooksController extends Controller
             $rating = new Rating;
             $rating->user_id = auth()->user()->id;
             $rating->book_id = $book->id;
+            $rating->value = $request->value;
             $rating->save();
         }
 
