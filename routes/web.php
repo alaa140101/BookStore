@@ -47,4 +47,4 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
 
-
+Route::post('/cart', 'CartController@addToCart')->name('cart.add');
