@@ -48,3 +48,6 @@ Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.autho
 Route::get('/authors/{author}', 'AuthorsController@result')->name('gallery.authors.show');
 
 Route::post('/cart', 'CartController@addToCart')->name('cart.add');
+Route::get('/cart', 'CartController@viewCart')->name('cart.view');
+Route::post('/removeOne/{book}', 'CartController@removeOne')->name('cart.remove_one');
+Route::post('/removeAll/{book}', 'CartController@removeAll')->name('cart.remove_all');

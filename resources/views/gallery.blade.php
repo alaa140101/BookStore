@@ -59,6 +59,15 @@
                                         @endif
                                         <br>
                                         <b>السعر: </b>{{$book->price}} $
+
+                                        @auth
+                                            <form action="{{ route('cart.add') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $book->id }}">
+                                                <input type="number" name="quantity" class="form-control" id="" value="1" min="1" max="{{ $book->number_of_copies }}" style="width: 40%; float: right" required>
+                                                <button type="submit" class="btn btn-primary" style="margin-right: 10px">اضف <i class="fas fa-cart-plus"></i></button>
+                                            </form>    
+                                        @endauth
                                     </div>
                                 </div>
                                 

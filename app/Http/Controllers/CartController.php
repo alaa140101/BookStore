@@ -18,6 +18,38 @@ class CartController extends Controller
 
         if(auth()->user()->booksInCart->contain($book)){
             $newQuantity = $request->quantity + auth()->user()->booksInCart()->where('book_id', $book->id)->first()->pivot->number_of_copies;
+            if ($newQuantity > $book->number_of_copies) {
+                session()->flash('warning_message', 'الكمية المطلوبة غير ممكنة، الكمية المتوفرة هي: '. (auth()->user()->booksInCart()->where('book_id', $book->id)->first()->pivot->number_of_copies). 'كتاب');
+                return redirect()->back();
+            }else{
+                auth()->user()->booksInCart()->updateExistingPivot($book->id, ['number_of_copies' => $newQuantity]);
+            }
+        }else {
+            auth()->user()->booksInCart()->attach($request->id, ['number_of_copies' => $request->quantity]);
         }
+    }
+
+    public function viewCart()
+    {
+        $items = auth()->user()->booksInCart;
+        return view('cart', compact('items'));
+    }
+
+    public function removeOne(Book $book) {
+        $oldQuantity = auth()->user()->booksIncart()->where('book_id', $book->id)->first()->pivot->number_of_copies;
+
+        if ($oldQuantity > 1) {
+            auth()->user()->booksInCart()->updateExistingPivot($book->id, ['number_of_copies' => --$oldQuantity]);
+        } else {
+            auth()->user()->bookInCart()->detach($book->id);
+        }
+
+        return redirect()->back();
+    }
+
+    public function removeAll(Book $book) {
+        auth()->user()->booksInCart()->detach($book->id);
+
+        return redirect()->back();
     }
 }
