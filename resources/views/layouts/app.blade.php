@@ -102,11 +102,11 @@
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    {{-- @if(Auth::user()->booksInCart()->count() > 0) --}}
+                                    @if(Auth::user()->booksInCart()->count() > 0)
                                         <span class="badge badge-secondary">
-                                        {{-- {{ Auth::user()->booksInCart()->count() }} --}}
+                                        {{ Auth::user()->booksInCart()->count() }}
                                         </span>
-                                    {{-- @endif --}}
+                                    @endif
                                         العربة 
                                     <i class="fas fa-shopping-cart"></i> 
                                 </a>
