@@ -4,6 +4,7 @@
 
   <div class="container">
     <div class="row justify-content-center">
+      <div id="success" class="col-md-8 text-center h3 p-4 bg-success text-light rounded" style="display: none">تمت عملية الشراء بنجاح</div>
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">عربة التسوق</div>
@@ -43,7 +44,7 @@
                     @endforeach
                 </table>
                 <h4>المجموع النهائي: {{ $totalPrice }}</h4>
-                <div id="paypal-button-container" style="width: 20px"></div>
+                <div id="paypal-button"></div>
                 @else 
                 <h1>لا يوجد كتب في العربة</h1>
             @endif
@@ -56,35 +57,36 @@
 @endsection
 
 @section('script')
-<script src="https://www.paypal.com/sdk/js?client-id=AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
-paypal.Buttons({
-
-// Sets up the transaction when a payment button is clicked
-createOrder: function(data, actions) {
-  return actions.order.create({
-    purchase_units: [{
-      amount: {
-        value: '20' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
-      }
-    }]
-  });
-},
-
-// Finalize the transaction after payer approval
-onApprove: function(data, actions) {
-  return actions.order.capture().then(function(orderData) {
-    // Successful capture! For dev/demo purposes:
-        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-        var transaction = orderData.purchase_units[0].payments.captures[0];
-        alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-    // When ready to go live, remove the alert and show a success message within this page. For example:
-    // var element = document.getElementById('paypal-button-container');
-    // element.innerHTML = '';
-    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-    // Or go to another URL:  actions.redirect('thank_you.html');
-  });
-}
-}).render('#paypal-button-container');</script>    
+  paypal.Button.render({
+    env: 'sandbox', // Or 'production'
+    // Set up the payment:
+    // 1. Add a payment callback
+    payment: function(data, actions) {
+      // 2. Make a request to your server
+      return actions.request.post('/api/create-payment/', {
+        userId: "{{ auth()->user()->id }}"
+      })
+        .then(function(res) {
+          // 3. Return res.id from the response
+          return res.id;
+        });
+    },
+    // Execute the payment:
+    // 1. Add an onAuthorize callback
+    onAuthorize: function(data, actions) {
+      // 2. Make a request to your server
+      return actions.request.post('/api/execute-payment/', {
+        paymentID: data.paymentID,
+        payerID:   data.payerID,
+        userId: "{{ auth()->user()->id }}"
+      })
+        .then(function(res) {
+          $('#success').slideDown(200);
+          $('.card-body').slideUp(0);
+        });
+    }
+  }, '#paypal-button');
+</script>   
 @endsection
