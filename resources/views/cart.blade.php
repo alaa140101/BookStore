@@ -53,3 +53,8 @@
   </div>
     
 @endsection
+
+@section('script')
+<script src="https://www.paypal.com/sdk/js?client-id=AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8"></script>
+<script>paypal.Buttons().render('body');</script>    
+@endsection
