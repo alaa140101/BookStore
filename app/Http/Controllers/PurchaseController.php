@@ -12,6 +12,8 @@ use PayPal\Api\ItemList;
 use PayPal\Api\Transaction;
 use PayPal\Api\RedirectUrls;
 use Illuminate\Http\Request;
+use PayPal\Rest\ApiContext; 
+use PayPal\Auth\OAuthTokenCredential; 
 
 use PayPal\Api\PaymentExecution;
 
@@ -20,8 +22,8 @@ class PurchaseController extends Controller
 {
     public function createPayment(Request $request) 
     {
-        $apiContext = new \PayPal\Rest\ApiContext(
-            new \PayPal\Auth\OAuthTokenCredential(
+        $apiContext = new ApiContext(
+            new OAuthTokenCredential(
                 'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
                 'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
         );
@@ -90,8 +92,8 @@ class PurchaseController extends Controller
 
     public function executePayment(Request $request)
     {
-        $apiContext = new \PayPal\Rest\ApiContext(
-            new \PayPal\Auth\OAuthTokenCredential(
+        $apiContext = new ApiContext(
+            new OAuthTokenCredential(
                 'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
                 'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
         );
