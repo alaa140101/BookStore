@@ -22,8 +22,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8', 
-                'EG3k08X0uKRFAmUWParjMHtoVohX8hGM5SZ7J50HsYYyy5uPOXXWCp2VrVtjBQFB1jpNIewua16B6ugx')
+                'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
+                'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
         );
 
         $shipping = 0;
@@ -92,8 +92,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8', 
-                'EG3k08X0uKRFAmUWParjMHtoVohX8hGM5SZ7J50HsYYyy5uPOXXWCp2VrVtjBQFB1jpNIewua16B6ugx')
+                'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
+                'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
         );
     
         $paymentId = $request->paymentID;

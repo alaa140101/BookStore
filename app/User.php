@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Book')->withPivot(['number_of_copies', 'bought'])->wherePivot('bought', False);
     }
+
+    public function reatedpurches()
+    {
+        return $this->belongsToMany('App\Book')->withPivot(['bought'])->wherePivot('bought', true);
+    }
 }
