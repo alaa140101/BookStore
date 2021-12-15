@@ -43,7 +43,7 @@
                         </tbody>
                     @endforeach
                 </table>
-                <h4>المجموع النهائي: {{ $totalPrice }}</h4>
+                <h4>المجموع النهائي: {{ $totalPrice }} $</h4>
                 <div id="paypal-button"></div>
                 @else 
                 <h1>لا يوجد كتب في العربة</h1>

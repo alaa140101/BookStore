@@ -92,8 +92,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'AVwC7KzAEnt50QzmJ0O9n5e-rjVVr0D9PeNVLgs6ft7IJ7iIB8qQHKBScZNdMJVQMv0eFHYV-1euhqKf', 
-                'EOcaJWxEyV_ox9hrt3N1sPMbQJYu-cvvuwUxcZorrFxb3NvPcM6OF7xP_nFwnRGnE4spHfFfNuTVrZwY')
+                'AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8', 
+                'EG3k08X0uKRFAmUWParjMHtoVohX8hGM5SZ7J50HsYYyy5uPOXXWCp2VrVtjBQFB1jpNIewua16B6ugx')
         );
     
         $paymentId = $request->paymentID;
