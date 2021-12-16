@@ -11,11 +11,11 @@ use PayPal\Api\Payment;
 use PayPal\Api\ItemList;
 use PayPal\Api\Transaction;
 use PayPal\Api\RedirectUrls;
-use Illuminate\Http\Request;
 use PayPal\Rest\ApiContext; 
 use PayPal\Auth\OAuthTokenCredential; 
 
 use PayPal\Api\PaymentExecution;
+use Illuminate\Http\Request;
 
 
 class PurchaseController extends Controller
@@ -24,8 +24,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new ApiContext(
             new OAuthTokenCredential(
-                'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
-                'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
+                'AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8', 
+                'EG3k08X0uKRFAmUWParjMHtoVohX8hGM5SZ7J50HsYYyy5uPOXXWCp2VrVtjBQFB1jpNIewua16B6ugx')
         );
 
         $shipping = 0;
@@ -94,8 +94,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new ApiContext(
             new OAuthTokenCredential(
-                'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
-                'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
+                'AV1hLmmCCiDjt3Wo7CuhSmZlba26KmwVdocffVMc0exNpQRVyXGEBlggMVVX_WS9lCPHOWekj8hfunf8', 
+                'EG3k08X0uKRFAmUWParjMHtoVohX8hGM5SZ7J50HsYYyy5uPOXXWCp2VrVtjBQFB1jpNIewua16B6ugx')
         );
     
         $paymentId = $request->paymentID;
