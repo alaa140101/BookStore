@@ -65,7 +65,7 @@
     // 1. Add a payment callback
     payment: function(data, actions) {
       // 2. Make a request to your server
-      return actions.request.post('/api/create-payment/', {
+      return actions.request.post('/api/create-payment', {
         userId: "{{ auth()->user()->id }}"
       })
         .then(function(res) {
@@ -77,7 +77,7 @@
     // 1. Add an onAuthorize callback
     onAuthorize: function(data, actions) {
       // 2. Make a request to your server
-      return actions.request.post('/api/execute-payment/', {
+      return actions.request.post('/api/execute-payment', {
         paymentID: data.paymentID,
         payerID:   data.payerID,
         userId: "{{ auth()->user()->id }}"

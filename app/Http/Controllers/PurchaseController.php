@@ -24,8 +24,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new ApiContext(
             new OAuthTokenCredential(
-                'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
-                'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
+                'AVTI4E88SdSvUIPxff5_S0bpRXba0LDgwZs2-l8u5JfN7KbnGHZTOZC_7Zxnl3SN_kz6UfuB3xcTiLAk', 
+                'ENQCLfz81J70OpXTpcK4VnwxOEekCGXw_DT8SDzoVcMoyTgGg4LWesDOItVwtootBnHatcisL1HIniHU')
         );
 
         $shipping = 0;
@@ -94,8 +94,8 @@ class PurchaseController extends Controller
     {
         $apiContext = new ApiContext(
             new OAuthTokenCredential(
-                'AYKJMIXFJ-Ta1vE_Ezlbd6Jk7n1pdw_GpRKpYtjAxjBqJ1aEQoawxs_Vaziy8AwGjClpt0WK0xCDpzja', 
-                'ECiLNSCDxVT2F0s9_XQFhiunCv8RKVxivg9TWgtML45O6bLaRj4mnYcpRKxFuZhQNVXVjh_cCc6cCQnl')
+                'AVTI4E88SdSvUIPxff5_S0bpRXba0LDgwZs2-l8u5JfN7KbnGHZTOZC_7Zxnl3SN_kz6UfuB3xcTiLAk', 
+                'ENQCLfz81J70OpXTpcK4VnwxOEekCGXw_DT8SDzoVcMoyTgGg4LWesDOItVwtootBnHatcisL1HIniHU')
         );
     
         $paymentId = $request->paymentID;
