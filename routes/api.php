@@ -18,5 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('create-payment', 'PurchaseController@createPayment');
-Route::post('execute-payment', 'PurchaseController@executePayment');
+// Route::post('create-payment', 'PurchaseController@createPayment');
+// Route::post('execute-payment', 'PurchaseController@executePayment');
+
+Route::group(['prefix'=>'paypal'], function(){
+    Route::post('/create-payment', 'PaypalPaymentController@createPayment');
+    Route::post('/execute-payment', 'PaypalPaymentController@executePayment');
+});

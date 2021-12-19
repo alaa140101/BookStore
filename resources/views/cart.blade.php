@@ -57,36 +57,47 @@
 @endsection
 
 @section('script')
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<!-- Include the PayPal JavaScript SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}"></script>
+
 <script>
-  paypal.Button.render({
-    env: 'sandbox', // Or 'production'
-    // Set up the payment:
-    // 1. Add a payment callback
-    payment: function(data, actions) {
-      // 2. Make a request to your server
-      return actions.request.post('/api/create-payment', {
-        userId: "{{ auth()->user()->id }}"
-      })
-        .then(function(res) {
-          // 3. Return res.id from the response
-          return res.id;
-        });
-    },
-    // Execute the payment:
-    // 1. Add an onAuthorize callback
-    onAuthorize: function(data, actions) {
-      // 2. Make a request to your server
-      return actions.request.post('/api/execute-payment', {
-        paymentID: data.paymentID,
-        payerID:   data.payerID,
-        userId: "{{ auth()->user()->id }}"
-      })
-        .then(function(res) {
-          $('#success').slideDown(200);
-          $('.card-body').slideUp(0);
-        });
-    }
-  }, '#paypal-button');
-</script>   
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+    // Call your server to set up the transaction
+        createOrder: function(data, actions) {
+            return fetch('/api/paypal/create-payment', {
+                method: 'POST',
+                body:JSON.stringify({
+                    'userId' : "{{auth()->user()->id}}",
+                })
+            }).then(function(res) {
+                return res.json();
+            }).then(function(orderData) {
+                return orderData.id;
+            });
+        },
+
+        // Call your server to finalize the transaction
+        onApprove: function(data, actions) {
+            return fetch('/api/paypal/execute-payment' , {
+                method: 'POST',
+                body :JSON.stringify({
+                    orderId : data.orderID,
+                    userId: "{{ auth()->user()->id }}",
+                })
+            }).then(function(res) {
+                return res.json();
+            }).then(function(orderData) {
+
+                if(orderData.status == "COMPLETED") {
+                    $('#success').slideDown(200);
+                    $('.card-body').slideUp(0);
+                }
+                
+            });
+        }
+
+    }).render('#paypal-button');
+
+</script>
 @endsection
